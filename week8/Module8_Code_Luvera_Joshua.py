@@ -7,34 +7,34 @@ def get_income():
     n = 0
     while n <= 0:
         income=float(input("Enter weekly income (NUMBERS ONLY, NO DOLLAR SIGNS):"))
-        if income == 0:
-            print("Income cannot be zero, please try again.")
+        if income <= 0:
+            print("Income cannot be zero or negative. Please try again.")
             continue
         else:
             n += 1
     return income
-#food=float(input("Enter weekly food expenses (NUMBERS ONLY, NO DOLLAR SIGNS):"))
-#transportation=float(input("Enter weekly transportation expenses (NUMBERS ONLY, NO DOLLAR SIGNS):"))
-#entertainemnt=float(input("Enter weekly entertainemnt expenses (NUMBERS ONLY, NO DOLLAR SIGNS):"))
-#total_expenses=food+transportation+entertainemnt #Calculate total weekly expenses
+
+def get_daily_expenses()
+    day = 1
+    total_expenses = 0
+    while day <= 7:
+        daily_expenses=float(input(f"Please enter how much money you spent on day {day} (NUMBERS ONLY NO DOLLAR SIGNS):"))
+
+        #Detects if the given input is negative, if it is, then retry the previous step, if not then it continues to the next day
+        if daily_expenses < 0:
+            print("The value of money cannot be negative, please try again.")
+            continue
+        else:
+            total_expenses += daily_expenses
+            day += 1
 
 #initialize variables
 total_expenses = 0
-day = 1
 
 
 #starts a loop that asks the user for their expenses for each of the seven days of the week and adds it to the total expenses
 income = get_income()
-while day <= 7:
-    daily_expenses=float(input(f"Please enter how much money you spent on day {day} (NUMBERS ONLY NO DOLLAR SIGNS):"))
 
-    #Detects if the given input is negative, if it is, then retry the previous step, if not then it continues to the next day
-    if daily_expenses < 0:
-        print("The value of money cannot be negative, please try again.")
-        continue
-    else:
-        total_expenses += daily_expenses
-        day += 1
 
 average_daily_expenses = total_expenses/7 #calculates the average daily expenses
 remaining=income-total_expenses #Calculate remaining balance
@@ -50,9 +50,6 @@ else:
 
 #Displays expenses, income, and remaining balance
 print(f"Weekly income: ${income:.2f}")
-#print(f"Weekly food expenses: ${food:.2f}")
-#print(f"Weekly transportation expenses: ${transportation:.2f}")
-#print(f"Weekly entertainment expenses: ${entertainemnt:.2f}")
 print(f"Total Weekly expenses: ${total_expenses:.2f}")
 print(f"Average daily expenses: ${average_daily_expenses:.2f}")
 print(f"Remaining balance: ${remaining:.2f}")
@@ -61,3 +58,11 @@ print(f"Spending Status: {spending_status}")
 
 if remaining < 50 or spending_status == "HIGH":
     print("WARNING: You are over budget for this month.")
+
+#print(f"Weekly food expenses: ${food:.2f}")
+#print(f"Weekly transportation expenses: ${transportation:.2f}")
+#print(f"Weekly entertainment expenses: ${entertainemnt:.2f}")
+#food=float(input("Enter weekly food expenses (NUMBERS ONLY, NO DOLLAR SIGNS):"))
+#transportation=float(input("Enter weekly transportation expenses (NUMBERS ONLY, NO DOLLAR SIGNS):"))
+#entertainemnt=float(input("Enter weekly entertainemnt expenses (NUMBERS ONLY, NO DOLLAR SIGNS):"))
+#total_expenses=food+transportation+entertainemnt #Calculate total weekly expenses
