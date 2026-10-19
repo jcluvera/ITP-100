@@ -1,6 +1,9 @@
 #Name: Joshua Luvera
 #Date: 10/11/2026
-#Assignment: Module 6 Personal Budjet Planner, Part 2
+#Assignment: Module 8 Personal Budjet Planner, Part 2
+
+#initialize variables
+total_expenses = 0
 
 #Get inputs from user
 def get_income():
@@ -14,7 +17,7 @@ def get_income():
             n += 1
     return income
 
-def get_daily_expenses()
+def get_daily_expenses():
     day = 1
     total_expenses = 0
     while day <= 7:
@@ -27,37 +30,39 @@ def get_daily_expenses()
         else:
             total_expenses += daily_expenses
             day += 1
+    return total_expenses
 
-#initialize variables
-total_expenses = 0
 
+def analyze_income_spent_percentage(income_spent_percentage):
+    if income_spent_percentage > 80:
+        spending_status="HIGH"
+    elif income_spent_percentage > 50:
+        spending_status="MODERATE"
+    else:
+        spending_status="LOW"
+    return income_spent_percentage
 
 #starts a loop that asks the user for their expenses for each of the seven days of the week and adds it to the total expenses
-income = get_income()
+def main():
+    income = get_income()
+    total_expenses = get_daily_expenses()
+    average_daily_expenses = total_expenses/7 #calculates the average daily expenses
+    remaining=income-total_expenses #Calculate remaining balance
+    income_spent_percentage=(total_expenses/income)*100 #Calculate percentage of income spent
+    spending_status = analyze_income_spent_percentage(income_spent_percentage)
+    #Analyze the percentage of income spent and set spending status accordingly
+    #Displays expenses, income, and remaining balance
+    print(f"Weekly income: ${income:.2f}")
+    print(f"Total Weekly expenses: ${total_expenses:.2f}")
+    print(f"Average daily expenses: ${average_daily_expenses:.2f}")
+    print(f"Remaining balance: ${remaining:.2f}")
+    print(f"Percentage of Income Spent: {income_spent_percentage:.2f}%")
+    print(f"Spending Status: {spending_status}")
 
+    if remaining < 50 or spending_status == "HIGH":
+        print("WARNING: You are over budget for this month.")
 
-average_daily_expenses = total_expenses/7 #calculates the average daily expenses
-remaining=income-total_expenses #Calculate remaining balance
-income_spent_percentage=(total_expenses/income)*100 #Calculate percentage of income spent
-
-#Analyze the percentage of income spent and set spending status accordingly
-if income_spent_percentage > 80:
-    spending_status="HIGH"
-elif income_spent_percentage > 50:
-    spending_status="MODERATE"
-else:
-    spending_status="LOW"
-
-#Displays expenses, income, and remaining balance
-print(f"Weekly income: ${income:.2f}")
-print(f"Total Weekly expenses: ${total_expenses:.2f}")
-print(f"Average daily expenses: ${average_daily_expenses:.2f}")
-print(f"Remaining balance: ${remaining:.2f}")
-print(f"Percentage of Income Spent: {income_spent_percentage:.2f}%")
-print(f"Spending Status: {spending_status}")
-
-if remaining < 50 or spending_status == "HIGH":
-    print("WARNING: You are over budget for this month.")
+main()
 
 #print(f"Weekly food expenses: ${food:.2f}")
 #print(f"Weekly transportation expenses: ${transportation:.2f}")
